@@ -73,7 +73,8 @@ header.nav {
 }
 .nav .wrap { display: flex; align-items: center; gap: 16px; height: 64px; }
 .brand { font: 700 1.15rem var(--font-display); text-decoration: none; display: flex; align-items: center; gap: 10px; }
-.brand b { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 9px; background: var(--accent); color: var(--accent-ink); font-size: .95rem; }
+.brand img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; object-position: 50% 12%; box-shadow: 0 0 0 2px var(--accent); background: var(--surface-2); }
+.ico-img { width: 20px; height: 20px; flex: none; display: block; }
 .nav ul { display: flex; gap: 4px; list-style: none; margin: 0 0 0 auto; padding: 0; }
 .nav ul a { display: block; padding: 8px 12px; border-radius: 8px; text-decoration: none; color: var(--muted); font-size: .92rem; font-weight: 500; transition: color .2s, background .2s; }
 .nav ul a:hover { color: var(--fg); }
@@ -116,10 +117,14 @@ header.nav {
 .portrait .t1 { left: -56px; bottom: 28px; animation: float 6s ease-in-out infinite; }
 @keyframes float { 50% { transform: translateY(-10px); } }
 
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 48px; }
+.stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 48px; }
 .stat { background: var(--surface); padding: 20px 22px; }
 .stat b { font: 800 clamp(1.9rem, 4vw, 2.6rem) var(--font-display); font-variant-numeric: tabular-nums; display: block; line-height: 1; }
 .stat span { color: var(--muted); font-size: .9rem; }
+.stat .wip { display: inline-block; margin-left: 6px; font: 600 .68rem var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 1px 7px; vertical-align: 2px; }
+@media (max-width: 960px) and (min-width: 641px) { .stats { grid-template-columns: repeat(3, 1fr); } .stats .stat:nth-child(n+4) { grid-column: span 1; } }
+button.logo-chip { font: inherit; cursor: pointer; }
+.filter.client-on { display: inline-flex; gap: 8px; align-items: center; }
 
 /* clients marquee */
 .clients { padding-block: 36px 8px; }
@@ -294,6 +299,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 @media (max-width: 640px) {
   .hero { padding-block: 32px 24px; }
   .stats { grid-template-columns: 1fr 1fr; }
+  .stats .stat:last-child { grid-column: 1 / -1; }
   .edu-grid, .competencies { grid-template-columns: 1fr; }
   .proj-grid { grid-template-columns: 1fr; }
   .portrait { margin-bottom: 28px; } .portrait .t1 { left: 50%; bottom: -26px; translate: -50% 0; }
@@ -314,7 +320,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <div id="progress"></div>
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top"><b>B</b>Balaraju</a>
+    <a class="brand" href="#top"><img src="profile.webp" alt="" width="36" height="36">Balaraju</a>
     <ul id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -341,12 +347,12 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <h1 class="rise d1">Balaraju
             <span class="role"><span class="typed" id="typed">Technical Lead</span><span class="caret"></span></span>
           </h1>
-          <p class="lede rise d2">I design and ship Java microservices and REST APIs for banks, insurers, telecoms and enterprise platforms. Twelve years across Citi, MetLife, DTCC, AT&amp;T, Apple and Google programs, plus EdTech SaaS products for PJSD Academy, most recently leading a five-person team.</p>
+          <p class="lede rise d2">I design and ship Java microservices and REST APIs for banks, insurers, telecoms and enterprise platforms. Twelve years across Citi, MetLife, DTCC, AT&amp;T, Apple and Google programs, plus two EdTech SaaS products in progress for PJSD Academy, most recently leading a five-person team.</p>
           <div class="cta rise d3">
             <a class="btn primary" href="#contact">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>Get in touch</a>
             <a class="btn" href="https://www.linkedin.com/in/balaraju7250" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5z"/></svg>LinkedIn</a>
+              <img class="ico-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSIjMDA3NmIyIiBkPSJNMTE2IDNIMTJhOC45MSA4LjkxIDAgMDAtOSA4Ljh2MTA0LjQyYTguOTEgOC45MSAwIDAwOSA4Ljc4aDEwNGE4LjkzIDguOTMgMCAwMDktOC44MVYxMS43N0E4LjkzIDguOTMgMCAwMDExNiAzeiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0yMS4wNiA0OC43M2gxOC4xMVYxMDdIMjEuMDZ6bTkuMDYtMjlhMTAuNSAxMC41IDAgMTEtMTAuNSAxMC40OSAxMC41IDEwLjUgMCAwMTEwLjUtMTAuNDlNNTAuNTMgNDguNzNoMTcuMzZ2OGguMjRjMi40Mi00LjU4IDguMzItOS40MSAxNy4xMy05LjQxQzEwMy42IDQ3LjI4IDEwNyA1OS4zNSAxMDcgNzV2MzJIODguODlWNzguNjVjMC02Ljc1LS4xMi0xNS40NC05LjQxLTE1LjQ0cy0xMC44NyA3LjM2LTEwLjg3IDE1VjEwN0g1MC41M3oiLz48L3N2Zz4=" alt="" width="20" height="20">LinkedIn</a>
             <a class="btn" href="#projects">View projects</a>
           </div>
         </div>
@@ -358,7 +364,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
       <div class="stats rise d3">
         <div class="stat"><b data-count="12" data-suffix="+">12+</b><span>Years of experience</span></div>
-        <div class="stat"><b data-count="9">9</b><span>Projects delivered</span></div>
+        <div class="stat"><b data-count="7">7</b><span>Projects delivered</span></div>
+        <div class="stat"><b data-count="2">2</b><span>SaaS products <em class="wip">In progress</em></span></div>
         <div class="stat"><b data-count="4">4</b><span>Companies</span></div>
         <div class="stat"><b data-count="5">5</b><span>Developers led &amp; mentored</span></div>
       </div>
@@ -471,11 +478,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
             <button class="copy" data-copy="baluthetechy@gmail.com">Copy</button>
           </div>
           <div class="c-item">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5z"/></svg>
+            <img class="ico-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSIjMDA3NmIyIiBkPSJNMTE2IDNIMTJhOC45MSA4LjkxIDAgMDAtOSA4Ljh2MTA0LjQyYTguOTEgOC45MSAwIDAwOSA4Ljc4aDEwNGE4LjkzIDguOTMgMCAwMDktOC44MVYxMS43N0E4LjkzIDguOTMgMCAwMDExNiAzeiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0yMS4wNiA0OC43M2gxOC4xMVYxMDdIMjEuMDZ6bTkuMDYtMjlhMTAuNSAxMC41IDAgMTEtMTAuNSAxMC40OSAxMC41IDEwLjUgMCAwMTEwLjUtMTAuNDlNNTAuNTMgNDguNzNoMTcuMzZ2OGguMjRjMi40Mi00LjU4IDguMzItOS40MSAxNy4xMy05LjQxQzEwMy42IDQ3LjI4IDEwNyA1OS4zNSAxMDcgNzV2MzJIODguODlWNzguNjVjMC02Ljc1LS4xMi0xNS40NC05LjQxLTE1LjQ0cy0xMC44NyA3LjM2LTEwLjg3IDE1VjEwN0g1MC41M3oiLz48L3N2Zz4=" alt="" width="20" height="20">
             <div class="v"><small>LinkedIn</small><a href="https://www.linkedin.com/in/balaraju7250" target="_blank" rel="noopener">linkedin.com/in/balaraju7250</a></div>
           </div>
           <div class="c-item">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <img class="ico-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48ZyBmaWxsPSIjMTgxNjE2Ij48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTY0IDUuMTAzYy0zMy4zNDcgMC02MC4zODggMjcuMDM1LTYwLjM4OCA2MC4zODggMCAyNi42ODIgMTcuMzAzIDQ5LjMxNyA0MS4yOTcgNTcuMzAzIDMuMDE3LjU2IDQuMTI1LTEuMzEgNC4xMjUtMi45MDUgMC0xLjQ0LS4wNTYtNi4xOTctLjA4Mi0xMS4yNDMtMTYuOCAzLjY1My0yMC4zNDUtNy4xMjUtMjAuMzQ1LTcuMTI1LTIuNzQ3LTYuOTgtNi43MDUtOC44MzYtNi43MDUtOC44MzYtNS40OC0zLjc0OC40MTMtMy42Ny40MTMtMy42NyA2LjA2My40MjUgOS4yNTcgNi4yMjMgOS4yNTcgNi4yMjMgNS4zODYgOS4yMyAxNC4xMjcgNi41NjIgMTcuNTczIDUuMDIuNTQyLTMuOTAzIDIuMTA3LTYuNTY4IDMuODM0LTguMDc2LTEzLjQxMy0xLjUyNS0yNy41MTQtNi43MDQtMjcuNTE0LTI5Ljg0MyAwLTYuNTkzIDIuMzYtMTEuOTggNi4yMjMtMTYuMjEtLjYyOC0xLjUyLTIuNjk1LTcuNjYyLjU4NC0xNS45OCAwIDAgNS4wNy0xLjYyMyAxNi42MSA2LjE5QzUzLjcgMzUgNTguODY3IDM0LjMyNyA2NCAzNC4zMDRjNS4xMy4wMjMgMTAuMy42OTQgMTUuMTI3IDIuMDMzIDExLjUyNi03LjgxMyAxNi41OS02LjE5IDE2LjU5LTYuMTkgMy4yODcgOC4zMTcgMS4yMiAxNC40Ni41OTMgMTUuOTggMy44NzIgNC4yMyA2LjIxNSA5LjYxNyA2LjIxNSAxNi4yMSAwIDIzLjE5NC0xNC4xMjcgMjguMy0yNy41NzQgMjkuNzk2IDIuMTY3IDEuODc0IDQuMDk3IDUuNTUgNC4wOTcgMTEuMTgzIDAgOC4wOC0uMDcgMTQuNTgzLS4wNyAxNi41NzIgMCAxLjYwNyAxLjA4OCAzLjQ5IDQuMTQ4IDIuODk3IDIzLjk4LTcuOTk0IDQxLjI2My0zMC42MjIgNDEuMjYzLTU3LjI5NEMxMjQuMzg4IDMyLjE0IDk3LjM1IDUuMTA0IDY0IDUuMTA0eiIvPjxwYXRoIGQ9Ik0yNi40ODQgOTEuODA2Yy0uMTMzLjMtLjYwNS4zOS0xLjAzNS4xODUtLjQ0LS4xOTYtLjY4NS0uNjA1LS41NDMtLjkwNi4xMy0uMzEuNjAzLS4zOTUgMS4wNC0uMTg4LjQ0LjE5Ny42OS42MS41MzcuOTF6bTIuNDQ2IDIuNzI5Yy0uMjg3LjI2Ny0uODUuMTQzLTEuMjMyLS4yOC0uMzk2LS40Mi0uNDctLjk4My0uMTc3LTEuMjU0LjI5OC0uMjY2Ljg0NC0uMTQgMS4yNC4yOC4zOTQuNDI2LjQ3Mi45ODQuMTcgMS4yNTV6TTMxLjMxMiA5OC4wMTJjLS4zNy4yNTgtLjk3Ni4wMTctMS4zNS0uNTItLjM3LS41MzgtLjM3LTEuMTgzLjAxLTEuNDQuMzczLS4yNTguOTctLjAyNSAxLjM1LjUwNy4zNjguNTQ1LjM2OCAxLjE5LS4wMSAxLjQ1MnptMy4yNjEgMy4zNjFjLS4zMy4zNjUtMS4wMzYuMjY3LTEuNTUyLS4yMy0uNTI3LS40ODctLjY3NC0xLjE4LS4zNDMtMS41NDQuMzM2LS4zNjYgMS4wNDUtLjI2NCAxLjU2NC4yMy41MjcuNDg2LjY4NiAxLjE4LjMzMyAxLjU0M3ptNC41IDEuOTUxYy0uMTQ3LjQ3My0uODI1LjY4OC0xLjUxLjQ4Ni0uNjgzLS4yMDctMS4xMy0uNzYtLjk5LTEuMjM4LjE0LS40NzcuODIzLS43IDEuNTEyLS40ODUuNjgzLjIwNiAxLjEzLjc1Ni45ODggMS4yMzd6bTQuOTQzLjM2MWMuMDE3LjQ5OC0uNTYzLjkxLTEuMjguOTItLjcyMy4wMTctMS4zMDgtLjM4Ny0xLjMxNS0uODc3IDAtLjUwMy41NjgtLjkxIDEuMjktLjkyNC43MTctLjAxMyAxLjMwNi4zODcgMS4zMDYuODh6bTQuNTk4LS43ODJjLjA4Ni40ODUtLjQxMy45ODQtMS4xMjYgMS4xMTctLjcuMTMtMS4zNS0uMTcyLTEuNDQtLjY1My0uMDg2LS40OTguNDIyLS45OTcgMS4xMjItMS4xMjYuNzE0LS4xMjMgMS4zNTQuMTcgMS40NDQuNjYzem0wIDAiLz48L2c+PC9zdmc+" alt="" width="20" height="20">
             <div class="v"><small>GitHub</small><a href="https://github.com/Balu7250" target="_blank" rel="noopener">github.com/Balu7250</a></div>
           </div>
           <div class="c-item">
@@ -516,8 +523,10 @@ const enc = (s) => encodeURIComponent(s);
 const liveImg = (srcs, fb, alt) => {
   srcs = srcs.filter(Boolean);
   if (!srcs.length) return fb;
-  return `<img class="logo-img" src="${srcs[0]}" alt="${alt}" referrerpolicy="no-referrer" data-alt="${enc(srcs.slice(1).join("|"))}" data-fb="${enc(fb)}" onerror="logoFail(this)">`;
+  return `<img class="logo-img" src="${srcs[0]}" alt="${alt}" referrerpolicy="no-referrer" data-alt="${enc(srcs.slice(1).join("|"))}" data-fb="${enc(fb)}" onerror="logoFail(this)" onload="logoLoaded(this)">`;
 };
+/* Google's icon service answers unknown sites with a 16px grey globe that "loads" fine: treat it as a miss. */
+function logoLoaded(img) { if (img.src.includes("s2/favicons") && img.naturalWidth <= 16) logoFail(img); }
 function logoFail(img) {
   const rest = decodeURIComponent(img.dataset.alt || "").split("|").filter(Boolean);
   if (rest.length) { img.dataset.alt = enc(rest.slice(1).join("|")); img.src = rest[0]; }
@@ -534,7 +543,7 @@ const BRANDS = {
   att:      { name: "AT&T",          color: "#009FDB", domain: "att.com",          fb: () => svg("atandt") },
   pjsd:     { name: "PJSD Academy",  color: "#7C5CDB", domain: "pjskilldevelopment.com",               fb: () => badge("PJ", "#7C5CDB") },
   virtusa:  { name: "Virtusa",       color: "#4BB3E6", domain: "virtusa.com",      fb: () => badge("V", "#4BB3E6") },
-  tcs:      { name: "TCS",           color: "#4E84C4", domain: "tcs.com",          fb: () => svg("tcs") },
+  tcs:      { name: "TCS",           color: "#4E84C4", domain: null,          fb: () => svg("tcs") },
   cognizant:{ name: "Cognizant",     color: "#3A7BD5", domain: "cognizant.com",    fb: () => badge("C", "#3A7BD5") },
   techm:    { name: "Tech Mahindra", color: "#E31837", domain: "techmahindra.com", fb: () => badge("TM", "#E31837") },
 };
@@ -555,8 +564,10 @@ const tech = (s) => {
 /* Clients marquee (duplicated for seamless loop) */
 (() => {
   const ids = ["google","apple","citi","metlife","dtcc","att","pjsd"];
-  const html = ids.map(id => `<div class="logo-chip" style="--brand:${BRANDS[id].color}">${mark(id)}</div>`).join("");
-  document.getElementById("clientTrack").innerHTML = html + html.replace(/class="logo-chip"/g, 'class="logo-chip" aria-hidden="true"');
+  const html = ids.map(id => `<button class="logo-chip" data-client="${id}" style="--brand:${BRANDS[id].color}" title="Show ${BRANDS[id].name} projects">${mark(id)}</button>`).join("");
+  const track = document.getElementById("clientTrack");
+  track.innerHTML = html + html.replace(/class="logo-chip"/g, 'class="logo-chip" aria-hidden="true" tabindex="-1"');
+  track.addEventListener("click", e => { const c = e.target.closest(".logo-chip"); if (c && window.showClient) window.showClient(c.dataset.client); });
 })();
 
 /* Typewriter */
@@ -702,8 +713,8 @@ const SKILLS = [
     { c: "apple", dom: "Enterprise", t: "NOVA Marketing Automation", when: "Dec 2019 – Dec 2021", d: "A marketing automation and lead scoring platform for campaign management and customer segmentation.", pts: ["Designed lead qualification and deduplication logic", "Enabled targeted marketing through segmentation and automation"], stack: ["Java", "Spring Boot", "Hibernate", "REST"] },
     { c: "att", dom: "Telecom", t: "My AT&T AM", when: "Jul 2015 – Dec 2019", d: "Modules that track customer usage across wireline, wireless and U-verse services.", pts: ["Built backend services for usage data processing and reporting", "Gave the business visibility into customer consumption trends"], stack: ["Java", "Spring", "Struts 2", "REST", "Oracle"] },
     { c: "att", dom: "Telecom", t: "MyAT&T Portal", when: "Dec 2013 – Jun 2015", d: "A customer portal for account management, billing and service purchases.", pts: ["Developed core account and billing management features", "Supported smooth user interactions through backend services"], stack: ["Java", "Struts 2", "Spring", "Oracle"] },
-    { c: "pjsd", dom: "SaaS / EdTech", t: "PJSD Academy LMS Platform", when: "SaaS product", d: "A learning management SaaS platform for PJSD Academy: courses, batches, content delivery and student progress tracking.", pts: ["Built the platform's backend services and REST APIs", "Developed React.js interfaces for learners and administrators", "Designed for multi-batch course delivery and progress tracking"], stack: ["Java", "Spring Boot", "React.js", "REST APIs"] },
-    { c: "pjsd", dom: "SaaS / EdTech", t: "School App – Student & Parent", when: "SaaS product", d: "A SaaS school app giving students and parents one place for attendance, homework, results, fees and school announcements.", pts: ["Built backend services and REST APIs for student and parent features", "Developed responsive React.js screens for both audiences", "Kept student data access secure and role-based"], stack: ["Java", "Spring Boot", "React.js", "REST APIs"] },
+    { c: "pjsd", dom: "SaaS / EdTech", t: "PJSD Academy LMS Platform", when: "In progress", d: "A learning management SaaS platform for PJSD Academy: courses, batches, content delivery and student progress tracking.", pts: ["Built the platform's backend services and REST APIs", "Developed React.js interfaces for learners and administrators", "Designed for multi-batch course delivery and progress tracking"], stack: ["Java", "Spring Boot", "React.js", "REST APIs"] },
+    { c: "pjsd", dom: "SaaS / EdTech", t: "School App – Student & Parent", when: "In progress", d: "A SaaS school app giving students and parents one place for attendance, homework, results, fees and school announcements.", pts: ["Built backend services and REST APIs for student and parent features", "Developed responsive React.js screens for both audiences", "Kept student data access secure and role-based"], stack: ["Java", "Spring Boot", "React.js", "REST APIs"] },
   ];
   const grid = document.getElementById("projGrid"), f = document.getElementById("projFilters");
   const doms = ["All", "BFSI", "Insurance", "Telecom", "Enterprise", "SaaS / EdTech"];
@@ -715,11 +726,29 @@ const SKILLS = [
       <p>${p.d}</p>
       <div class="foot"><span>${p.when}</span><span class="open-txt">Details →</span></div>
     </button>`).join("");
+  /* One filter at a time: a domain button, or a client picked from the clients strip */
+  const clientChip = document.createElement("button");
+  clientChip.className = "filter on client-on"; clientChip.hidden = true;
+  f.appendChild(clientChip);
+  const apply = (dom, client) => {
+    f.querySelectorAll(".filter:not(.client-on)").forEach(x => { const on = !client && x.textContent === dom; x.classList.toggle("on", on); x.setAttribute("aria-pressed", on); });
+    clientChip.hidden = !client;
+    if (client) clientChip.innerHTML = `Showing: ${BRANDS[client].name.replace(/&/g, "&amp;")} <span aria-hidden="true">✕</span>`;
+    clientChip.setAttribute("aria-label", client ? `Clear ${BRANDS[client].name} filter` : "");
+    grid.querySelectorAll(".proj").forEach(p => {
+      const k = P[+p.dataset.k];
+      p.classList.toggle("hide", client ? k.c !== client : (dom !== "All" && k.dom !== dom));
+    });
+  };
   f.addEventListener("click", e => {
     const b = e.target.closest(".filter"); if (!b) return;
-    f.querySelectorAll(".filter").forEach(x => { x.classList.toggle("on", x === b); x.setAttribute("aria-pressed", x === b); });
-    grid.querySelectorAll(".proj").forEach(p => p.classList.toggle("hide", b.textContent !== "All" && p.dataset.dom !== b.textContent));
+    if (b === clientChip) return apply("All", null);
+    apply(b.textContent, null);
   });
+  window.showClient = (client) => {
+    apply("All", client);
+    document.getElementById("projects").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  };
   const m = document.getElementById("modal");
   grid.addEventListener("click", e => {
     const card = e.target.closest(".proj"); if (!card) return;
